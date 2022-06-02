@@ -618,7 +618,7 @@ array_name.filter(parameter =>condition)
 
 //Questions
   1. <ul: aria-live= 'polite'> ??
-
+ ff
 不明白：Escape, loop
 
 https://josephg.com/blog/what-i-tell-all-new-programmers/
