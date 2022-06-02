@@ -1,0 +1,181 @@
+CSS
+/* Format */
+selector1,
+selector2 {
+  property: value;
+}
+
+/* Element  */
+margin-top: 1em; 
+margin-bottom: 2em; 
+margin: 0 auto; -->等於選定區域置中
+line-height: 1.8em; 
+background-color: black; 
+color: white;
+padding: 8px 20px (vertical, horizontal spaces of a box)
+display: inline/outline(for list, horizontal space or vertical)
+z-index: 100 --> 覆蓋其他element
+  
+
+
+/* Selector */
+* --> universal
+tag --> tag of HTML doc
+id--> unique, in html tag, add id, in css, use #idname
+  <body id="testing"> --> html
+  #testing --> css
+class--> not, unique
+    <li calss="top"> --> html
+    .class --> css
+class and id can target the same section
+decendent --> 
+  header p --> specifically target a children 
+  #education h3 --> can also target children under id
+Class selector比decdedent好，因為可以手動選擇要改變的地方
+pseudo classes--> target specific condition
+Format --> place:pseudo class
+  a:link --> link never visited for link only
+  a:visited--> visited lnk
+  a:hover--> when cursor move on the link
+  a:focus--> when user use tab to interact with the link
+  ol li:first-child--> first child of each orderd list
+wrapper --> 即規定一個部分，讓那個部分受css控制 通常用element或class，class的話可指定多於一個區域，例如將body置中就可以 或使用<div class="underBody"> 再在CSS指定
+    body{
+  width: 80%;
+  margin: 0 auto;
+    }
+複選--> 如果需要用一個selector選擇兩個class, 如class是primary col & secondary col, 可以用 .col 來選定即可
+單選--> 如果只需要選擇一個，選定第一個字即可，如.primary & .secondary
+
+/* RWD web design */
+1. Sticky footer
+  當網頁內容不足，但又想要footer隨著網頁內容增加而在不同裝置都黏在最下面的話
+  首先將網頁主題加上class如下
+  <body>
+    <div class="wrap">
+      <main>
+      </main>
+    </div>
+  <body>
+
+  @media(min-width: 769px){
+  .wrap{
+    mid-height: 100vh; 
+/*     即整個主要部分，在比769px寬的螢幕中，最低一定會佔視窗的100%*/
+  }
+  }
+  但現在，footer會因為100vh排擠，直接往下移，所以要footer黏住的話，就要將100vh-footer的高度（要在網頁中看），現在就會改為
+  mid-height: cal(100vh-89px)
+/*   這樣footer就會因為主要部分不再佔100%而跟著主要部分走 */
+
+2. Flex box
+  能夠將項目均衡或隨flex box 規則而排序
+  通常會分開一張css 叫flexbox.css
+  Container: 即大flexbox嘅名，可以係class/item 就直接用到
+  Item: 每個flexbox下的item，要係container嘅children，標注<div class="item-1">如此類推
+
+Element
+  display: flex; --> cateogrize this as flexbox item
+  flex-direction: row; --> or column
+  flex-wrap: wrap;--> wrap when resolution is limited;
+  justify-content: allocate how items share the space, space-around(equally share)--> or space-between(向兩邊), google others
+  order: default 0，越前數字越少，所以最前面至少係-1，最後面至少係1 --> item only
+  flex-grow: if apply to all items, 1 means all item share equal space
+    if apply to specific item, when all item have 1 flex-grow, and specific have 3, it gives this item 3 times more space than other items --> item only
+  flex-basis: equals to min-width, set the basis width of flexbox OR using % set the percentage each element use--> item only
+  flex: (grow) (basis) (shrink) --> shorthand function, grow is essential, others are optional--> item only
+    flex: 1 200px
+  align-items: stretch(default) flex-start(靠上面) flex-end(靠下面) center --> container only
+  align-self: --> item only
+
+
+/* Unit */
+px --> same in any device or resolution
+%--> 永遠相對於其他東西而成，在最上層使用就是相對於整個screen，在children使用就相對於parent
+em--> 用於font-size先，相對於parent的font-size, 如parent--> font-size= 20px, 2em 等於2倍(40), 0.5 em等於0.5倍(10)
+  如果加上 margin-bottom 2em，而原本的font-size也是2em，那麼margin會變20*2*2=80
+rem--> 不會受到前一次計算影響
+    如果加上 margin-bottom 2em，而原本的font-size也是2em，那麼margin還是會用原本數值計算-->20*2=40
+  Relative measurment like em and rem is particualry useful for responsive website
+如果parent的font-size也使用1em/rem，那樣就會respect user default setting, if user default setting of font-size is 24, the size for parent element will be 24, normally it will be 16px
+vh/vw--> 代表view height/ view width，即選定範圍佔螢幕多少%，當一個圖形勢30vh 30vw 那麼隨著螢幕縮放，他所佔的位置永遠都是寬高30%
+
+color--> can use name/hex number/ rgb
+  If need to set transperancy, use rgb
+    rgb(239,25,25,0.5) -->半透明
+    rgb(239,25,25) --> 全色
+
+/* Relationship for CSS */
+/* Prioirty during conflicting order */
+1. By Source
+  Author CSS (CSS stylesheet)>User default>Website default
+2. By selector(from specific to general)
+  In-line>id>class>element
+3. By writing order
+  (In HTML) If there are 2 link to 2 css file  
+    Lower link> upper link
+  (In CSS) If there are 2 paragraph with same name
+    Lower order>upper order
+
+/* Inhertiance  */
+  Some order like color can be inherited from parent to children element.
+  Others like border, margin, padding cannot
+
+/* Usal layout of webpage */
+header and footer--> full-screen, wideth:100%
+body--> around 80% to make the content condense
+
+/* Mobile-based development */
+1. Media 
+    即讓整張CSS的style都是為了mobile環境設計，接著再考慮電腦螢幕。原因是mobile環境的小螢幕有較多限制，考慮的地方更多。方法是在CSS中加入：
+@media (min-width:769px){
+  .content{
+  width: 80%;
+  text-algin: center;
+  max-width: 1000px;
+}
+}
+
+這樣的寫法，是當螢幕寬度超過769px之後，才會在content class裡面執行下列指令，max-width即限制即便在大螢幕中，被選定的部分最大只能寬1000px
+換言之，mobile based development 就是將大螢幕視為例外，以手機螢幕為中心開發
+
+2. Break-point
+  即min-width set做幾多px, best practice is use content layout to decide which breakpoint do what, there may have major or minor breakpoint for different modification, only set breakpoint when necessary
+/* CSS box 的架構 */
+一個content其實是由content-box,padding,border,margin所組成（由內至外），當content-box被width 跟height 設定，而我們再加padding上去，整體的大小就會跟content-box當初設定不一樣
+--> 這個時候只要針對universal/section 設定 
+  * OR section:{
+  box-sizing: border-box;
+  }
+  就能夠讓電腦自動將conent-box所設定的大小套用上選定範圍，無視padding
+  
+/* Linking stylesheet */
+<link href="css/style.css" rel="stylesheet"> --> in header
+
+/* Useful Links */
+https://developer.mozilla.org/en-US/docs/Web/CSS/Reference
+https://css-tricks.com/
+https://www.w3.org/Style/CSS/
+https://caniuse.com/
+https://css-tricks.com/snippets/css/a-guide-to-flexbox/
+  --> visualize flexbox
+
+Normalize.css --> download online, help unifying the format from each browser
+
+  Validation service 
+  HTML --> https://validator.w3.org/#validate_by_input
+  CSS --> https://jigsaw.w3.org/css-validator/validator.html.en
+  
+/* Naive way for style */
+1. In-line style
+2. Internal style
+
+/* Question:  */
+1. What is top-margin collasping?
+  Suggested solution is to set the h1 top-margin to zero and inspect the source of top-margin (area right above the webpage)
+2. What is the base of em and rem?
+3. 
+  04:57 我的padding是加在mobile-based的文件裡，為何那個padding也會加在電腦螢幕的container，導致我要用border-box?
+  https://teamtreehouse.com/library/using-a-mobile-first-approach-2#downloads
+4. 單選--> 如果只需要選擇一個，選定第一個字即可，如.primary & .secondary
+  一個叫.primary col 一個叫.secondary col，為什麼不能選全部的名字，一定要選第一個才ok？

@@ -1,0 +1,145 @@
+HTML CSS notes
+
+Word Elements
+<!DOCTYPE HTML> —> specify it’s html document, can omit becuz every doc are html
+<html> —> start of html, can omit
+<head> —> contain<title>,<style>, <link>, <script>, <noscript>, <meta>, and <base>
+	<link href="style.css" rel="stylesheet" />
+	<script> —> content of javascript
+	<noscript> —> alternative if js doesn’t work
+	<meta name="keywords" content="html,css,javascript"> —> metadata for search engine
+
+<body> —> content 
+	<strong> —> in line element for bold
+	<em>—> in line element for italic 
+		<em style="display: block”>—> 看不懂
+	<p> —> new paragraph
+	<br/> —> new line, no need <br>, just type </br> when a new line is needed
+	<wbr /> —> new line for a long word, but when the page is large enough to display, it will be in one word, not a new line 
+  <hr> --> create horizontal line to separate part,note that do not use hr for simply asethic purpose
+	<abbr>—> dotted line+? When mouse go through it
+		The <abbr title="World Health Organization">WHO</abbr> was founded in 1948.
+  %20 --> use between words, specifically define spaces
+	<b>—> bold text
+	<strong> —> important text
+	<u>—> underline
+	<def>= italic definition
+	<em>= italic emphasized text
+	<I>= italic alternative voice or mood
+	<var> —> italic but defines variable
+	<bdo dir=“rtf”> OR <bdo dir=“ltr> —> right to left or another way
+	<big> —> larger font than it should
+	<small> —> smaller font than it should
+	<sub> —> 只有一半大小的subscript text
+	<code> —> indicate code =<kbd>
+  <pre></pre>--> monospace with exactly the same spacing of code
+	<del> —> 刪除線
+	<ins> —> use after <del> for inserted text
+	<mark> —> highlight part of a text
+	<pre> —> text inside it will preserve the format
+	<q> —>display “ “
+	<blockquote> —> display “ “  and show it’s a longer quote, can cite the quote through link
+		<blockquote>
+			ABCDEFG- <cite><a href=“http://www.google.com”>-Emil</a></cite>
+	<s> —> 刪除線，但與<del>不同的是它表達裡面的文字已經不再正確
+	<samp> sample output from computer program
+	大原則是即便顯示出來的文字是一樣，儘量用貼近意思的element，如<b>單純是bold text，而<strong>是important text，之後可以用css modify這些部分
+
+Reserved characters- can be displayed by code or name, search online
+  https://dev.w3.org/html5/html-author/charref
+
+<!--Structural element -->
+<header>
+	<nav> —> for major section of navigation, probably in header and footer
+<body>
+	<main> —>unique content of the website
+	<section>—>separate each section
+  <section id="name">--> set id for specific place for referral
+	<article>
+	<aside> —> side-info that related to website, e.g additional info
+	<footer>—> information suppose on the bottom
+  <figure> for image
+  <address>
+	<div>—> no meaning section, usually includes the whole page from body to the end of body
+  <span> --> <div> for words not blocks, inline element
+Semantic element: allow each engine and other programmers to read the structure of the page easily
+原則：如果element是under其他element就代表那是為那個element 服務，如footer can place under article or body
+
+Other element
+1, List
+<ul>—> unordered list, <li> act as each item of list, will display as dotted
+	<ul>
+		<li>Apple</li>
+		<li>Banana</li>
+		<li>Pear</li>
+	</ul>
+<ol>—> ordered list, will display as 1. 2. 3
+Customized order list—> start indicate the first number, reversed indicate reversed order, type indicate format of number, it could be “1”, “A”, “a”, “I”, “i”
+	<ol start="5" reversed type="I"> 
+		<li>Roman 5</li> 
+		<li>Roman 4</li> 
+		<li>Roman 3</li>
+	</ol>
+2, Link
+<a href=“link”>This link</a> —> this link is the world describing the link
+	<style> 
+		.rectangle { 
+			width: 200px; 
+			height: 100px; 
+			margin: 100px 20px; 
+			text-align:center; 
+			color: white;
+		}
+<!-- Link inside web doc -->
+a. If in a children folder
+<a href= “firstfolder/second.html”>Words</a>
+b. If trace back to parent folder
+<a href= “…/first.html”Words</a>
+c. If the webpage is uploaded
+<a href="/"first.html>Wordds</a>
+  --> it's a root path and only work if webpage is upload
+
+<!-- Link inside a webpage-->
+<a href="#idOfThePlace"> Name</a>
+<!-- Link to other webpage in speciifc place-->
+<a href="address/#idOfThePlace"> Name</a>
+
+<!-- Mail to link -->
+<a href= "mailto: emil0519@hku.hk?subject=Contact%20from%20your%20perosanl page">emil0519@hku.hk</a>
+
+  
+3, Image
+<img src=“.jpg” alt=“This is alternative text” title=“This is the title that hover over the image>
+Google for more attribute
+原則：同一類型檔案放在一個file
+如果image與網頁在不同的folder，要先離開而家嘅folder再入去image嘅folder
+  <img src="../../images/vr-user.jpg" alt="This is a photo with VR glasses and user" title="VR user">
+Caption:
+  <figcaption> -->caption under the photo
+
+
+
+
+	
+
+Loose feature
+1. Not case sensitive
+2. Comment —> <!— …—> OR select the code --> Command+/
+3. <h1… /> is ok 
+
+CSS
+Format
+tag(HTML element, function, document){ 	element: characteristic; 
+	element: characteristic;
+}
+
+Element 
+
+margin-top: 1em; 
+margin-bottom: 2em; 
+line-height: 1.8em; 
+background-color: black; 
+color: white;
+padding: 8px 20px (vertical, horizontal spaces of a box)
+display: inline/outline(for list, horizontal space or vertical)
+<li class> ?
